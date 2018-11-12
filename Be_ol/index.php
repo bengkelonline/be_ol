@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>eStartup Bootstrap Template</title>
+  <title>Bengkel Online</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -52,17 +52,12 @@
           <li class="menu-active"><a href="#testimonials">Home</a></li>
           <li class="menu-has-children"><a href="">Service</a>
             <ul>
-              <li><a href="#service">Service Berkala</a></li>
-              <li><a href="#">Riwayat Service</a></li>
+              <li><a href="#get-started">Service Berkala</a></li>
+              <li><a href="#get-started">Riwayat Service</a></li>
             </ul>
           </li>
-          <li class="menu-has-children"><a href="">Info</a>
-            <ul>
-              <li><a href="#">Oli</a></li>
-              <li><a href="#">Sparepart</a></li>
-            </ul>
-          </li>
-          <li><a href="#features">About Us</a></li>
+          <li><a href="#team">Info Sparepart dan Oli</a></li>
+          <li><a href="#about-us">About Us</a></li>
           <li><a href="#team">Help</a></li>
           <li><a href="">MASUK</a></li>
           <li><a href="">DAFTAR</a></li>
@@ -136,79 +131,23 @@
        </div>
     </div>
   </section>
-  <!-- <section id="hero" class="wow fadeIn">
-    <div class="hero-container">
-      <h1>Welcome to eStartups</h1>
-      <h2>Elegant Bootstrap Template for Startups, Apps &amp; more...</h2>
-      <img <section id="hero" class="wow fadeIn">
-    <div class="hero-container">
-      <h1>Welcome to eStartups</h1>
-  src="img/hero-img.png" alt="Hero Imgs">
-      <a href="index2.php" class="btn-get-started scrollto">Get Started</a>
-      <div class="btns">
-        <a href="#"><i class="fa fa-apple fa-3x"></i> App Store</a>
-        <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
-        <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>
-      </div>
-    </div>
-  </section> --><!-- #hero -->
-    
-  
   <!-- ==========================
     Get Started Section
   ============================
-   --><!-- <section id="get-started" class="padd-section text-center wow fadeInUp">
-
-    <div class="container">
-      <div class="section-title text-center">
-
-        <h2>simple systeme fordiscount </h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-
+   -->
+   <section id="newsletter" class="newsletter text-center wow fadeInUp">
+    <div class="overlay padd-section">
+        <div class="container">
+          <div class="navbar">
+            <div class="nav nav-tabs">
+                <li class="active"><a href="" class="fa fa-gear">Service Berkala</a></li>
+                <li><a href="" class="fa fa-book">Riwayat Service</a></li>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="img/svg/cloud.svg" alt="img" class="img-fluid">
-            <h4>introducing whatsapp</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            <a href="#">read more</a>
-
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="img/svg/planet.svg" alt="img" class="img-fluid">
-            <h4>user friendly interface</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            <a href="#">read more</a>
-
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-block">
-
-            <img src="img/svg/asteroid.svg" alt="img" class="img-fluid">
-            <h4>build the app everyone love</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            <a href="#">read more</a>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </section>
- -->
+
   <!-- ==========================
     About Us Section
   ============================ -->
@@ -216,16 +155,16 @@
     <div class="container">
       <div class="row justify-content-center">
 
-        <div class="col-md-5 col-lg-3">
-          <img src="img/about-img.png" alt="About">
+        <div class="col-md-7 col-lg-5">
+          <img src="img/gambar_bengkel.jpg" alt="Bengkel">
         </div>
 
         <div class="col-md-7 col-lg-5">
           <div class="about-content">
 
-            <h2><span>eStartup</span>UI Design Mobile </h2>
-            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-            </p>
+            <h2><span>Kelebihan</span>Kami</h2>
+            <!-- <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+            </p> -->
 
             <ul class="list-unstyled">
               <li><i class="fa fa-angle-right"></i>Creative Design</li>
@@ -329,33 +268,6 @@
   <!--==========================
     Screenshots Section
   ============================-->
-  <section id="screenshots" class="padd-section text-center wow fadeInUp">
-
-    <div class="container">
-      <div class="section-title text-center">
-        <h2>App Gallery</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="owl-carousel owl-theme">
-
-        <div><img src="img/screen/1.jpg" alt="img"></div>
-        <div><img src="img/screen/2.jpg" alt="img"></div>
-        <div><img src="img/screen/3.jpg" alt="img"></div>
-        <div><img src="img/screen/4.jpg" alt="img"></div>
-        <div><img src="img/screen/5.jpg" alt="img"></div>
-        <div><img src="img/screen/6.jpg" alt="img"></div>
-        <div><img src="img/screen/7.jpg" alt="img"></div>
-        <div><img src="img/screen/8.jpg" alt="img"></div>
-        <div><img src="img/screen/9.jpg" alt="img"></div>
-
-      </div>
-    </div>
-
-  </section>
-
   <!--==========================
     Video Section
   ============================-->
@@ -380,7 +292,7 @@
     <div class="container">
       <div class="section-title text-center">
 
-        <h2>Team Member</h2>
+        <h2>Info Sparepart dan Oli</h2>
         <p class="separator">Integer cursus bibendum augue ac cursus .</p>
 
       </div>
@@ -391,64 +303,92 @@
 
         <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
-            <img src="img/team/1.jpg" class="img-responsive" alt="img">
+            <img src="img/22296.png" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
             </div>
           </div>
         </div>
+
+        <div class="col-md-6 col-md-4 col-lg-3">
+          <div class="team-block bottom">
+            <img src="img/22296.png" class="img-responsive" alt="img">
+            <div class="team-content">
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
+            </div>
+          </div>
+        </div>
+
 
        <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
-            <img src="img/team/2.jpg" class="img-responsive" alt="img">
+            <img src="img/84010.png" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              <h4>Sparepart</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
-            <img src="img/team/3.jpg" class="img-responsive" alt="img">
+            <img src="img/22296.png" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
             </div>
           </div>
         </div>
 
         <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
-            <img src="img/team/4.jpg" class="img-responsive" alt="img">
+            <img src="img/22296.png" class="img-responsive" alt="img">
             <div class="team-content">
-              <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>manager</span>
-              <h4>Kimberly Tran</h4>
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
             </div>
           </div>
         </div>
 
+        <div class="col-md-6 col-md-4 col-lg-3">
+          <div class="team-block bottom">
+            <img src="img/22296.png" class="img-responsive" alt="img">
+            <div class="team-content">
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-md-4 col-lg-3">
+          <div class="team-block bottom">
+            <img src="img/22296.png" class="img-responsive" alt="img">
+            <div class="team-content">
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-md-4 col-lg-3">
+          <div class="team-block bottom">
+            <img src="img/22296.png" class="img-responsive" alt="img">
+            <div class="team-content">
+              <h4>Oli</h4>
+              <span></span>
+              <a href="" class="btn">Lihat</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -525,99 +465,7 @@
   <!--==========================
     Pricing Table Section
   ============================-->
-  <section id="pricing" class="padd-section text-center wow fadeInUp">
-
-    <div class="container">
-      <div class="section-title text-center">
-
-        <h2>Meet With Price</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-pricing">
-            <div class="table">
-              <h4>basic</h4>
-              <h2>$29</h2>
-              <ul class="list-unstyled">
-                <li><b>4 GB</b> Ram</li>
-                <li><b>7/24</b> Tech Support</li>
-                <li><b>40 GB</b> SSD Cloud Storage</li>
-                <li>Monthly Backups</li>
-                <li>Palo Protection</li>
-              </ul>
-              <div class="table_btn">
-                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i> Buy Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-pricing">
-            <div class="table">
-              <h4>PERSONAL</h4>
-              <h2>$29</h2>
-              <ul class="list-unstyled">
-                <li><b>4 GB</b> Ram</li>
-                <li><b>7/24</b> Tech Support</li>
-                <li><b>40 GB</b> SSD Cloud Storage</li>
-                <li>Monthly Backups</li>
-                <li>Palo Protection</li>
-              </ul>
-              <div class="table_btn">
-                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i> Buy Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-pricing">
-            <div class="table">
-              <h4>BUSINESS</h4>
-              <h2>$29</h2>
-              <ul class="list-unstyled">
-                <li><b>4 GB</b> Ram</li>
-                <li><b>7/24</b> Tech Support</li>
-                <li><b>40 GB</b> SSD Cloud Storage</li>
-                <li>Monthly Backups</li>
-                <li>Palo Protection</li>
-              </ul>
-              <div class="table_btn">
-                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i> Buy Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="block-pricing">
-            <div class="table">
-              <h4>profeesional</h4>
-              <h2>$29</h2>
-              <ul class="list-unstyled">
-                <li><b>4 GB</b> Ram</li>
-                <li><b>7/24</b> Tech Support</li>
-                <li><b>40 GB</b> SSD Cloud Storage</li>
-                <li>Monthly Backups</li>
-                <li>Palo Protection</li>
-              </ul>
-              <div class="table_btn">
-                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i> Buy Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <!--==========================
     Blog Section
   ============================-->
@@ -675,33 +523,6 @@
   <!--==========================
     Newsletter Section
   ============================-->
-  <section id="newsletter" class="newsletter text-center wow fadeInUp">
-    <div class="overlay padd-section">
-      <div class="container">
-
-        <div class="row justify-content-center">
-          <div class="col-md-9 col-lg-6">
-            <form class="form-inline" method="POST" action="#">
-
-              <input type="email" class="form-control " placeholder="Email Adress" name="email">
-              <button type="submit" class="btn btn-default"><i class="fa fa-location-arrow"></i>Subscribe</button>
-
-            </form>
-
-          </div>
-        </div>
-
-          <ul class="list-unstyled">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-
-
-      </div>
-    </div>
-  </section>
 
   <!--==========================
     Contact Section
