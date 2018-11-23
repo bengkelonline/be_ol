@@ -1,3 +1,12 @@
+<?php
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_user_email'])) {
+    # code...
+    header("location : Login/login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +43,12 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-
+    
   <header id="header" class="header header-hide">
     <div class="container">
 
@@ -51,12 +61,26 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#testimonials">Home</a></li>
+          <li class="menu-has-children"><a href="">Service</a>
+            <ul>
+              <li><a href="#get-started">Service Berkala</a></li>
+              <li><a href="#get-started">Riwayat Service</a></li>
+            </ul>
+          </li>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#team">Info Sparepart dan Oli</a></li>
-          <li><a href="#contact">Help</a></li>
+          <li><a href="#team">Help</a></li>
           <li><a href=""></a></li>
-          <li><a href="#newsletter">MASUK</a></li>
-          <!-- <li><a href="">DAFTAR</a></li> -->
+          <li><a href=""></a></li>
+          <li class="menu-has-children"><a href="">
+            <?php
+              echo $_SESSION['tb_user_email'];
+            ?>
+          </a>
+            <ul>
+              <li><a href="logout.php">Log Out</a></li>
+            </ul>
+          </li>
           <!-- <li><a href="" class="table_btn">Daftar</a></li> -->
           <!-- <li><a href="" class="btn-get-started scrolto">Masuk</a></li> -->
       </nav><!-- #nav-menu-container -->
@@ -139,18 +163,8 @@
    -->
    <section id="newsletter" class="newsletter text-center wow fadeInUp">
     <div class="overlay padd-section">
-      <div id="hero" class="wow fadeIn">
-        <div class="hero-container">
-          <h1 style=" color :#004d99">Bengkel Online</h1>
-      <h2 style="color : #0066cc">qwertyuiopasdfghjklzxcvbnm</h2>
-      <!-- <img src="img/hero-img.png" alt="Hero Imgs"> -->
-          <div class="col-md-6 col-md-4 col-lg-3">
-            <a href="login/login.php" class="btn-get-started scrollto">User</a>
-            <a href="login/login_admin.php" class="btn-get-started scrollto">Admin</a>
-        </div>
-      </div>
+
     </div>
-  </div>
   </section>
 
   <!-- ==========================
@@ -176,7 +190,6 @@
               <li><i class="fa fa-angle-right"></i>Penawaran harga yang terjangkau</li>
               <li><i class="fa fa-angle-right"></i>Lebih efektif dan efisien</li>
               <li><i class="fa fa-angle-right"></i>Sistem pemesanan layanan cepat dan instan</li>
-              <!-- <li><i class="fa fa-angle-right"></i></li> -->
             </ul>
 
           </div>
@@ -428,42 +441,6 @@
             </div>
           </div>
         </div>
-
-          <!-- <div class="social-links">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-          </div>
-
-        </div>
-
-        <div class="col-lg-5 col-md-8">
-          <div class="form">
-            <div id="sendmessage">Your message has been sent. Thank you!</div>
-            <div id="errormessage"></div> -->
-            <!-- <form action="" method="post" role="form" class="contactForm">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                <div class="validation"></div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form> -->
-          </div>
-        </div>
       </div>
     </div>
   </section><!-- #contact -->
@@ -586,3 +563,7 @@
 
 </body>
 </html>
+<?php
+mysqli_close($connect);
+ob_end_flush();
+?>
