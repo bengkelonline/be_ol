@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main2.css">
+	<link rel="stylesheet" type="text/css" href="css/main3.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -27,18 +27,28 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
+					<br>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form action="reset.php" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Change Password
 					</span>
 					<p> Buat sandi yang kuat dan tidak digunakan untuk situs lain</p>
 					<br>
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Add Password">
+						<input class="input100" type="text" name="email" value="" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" value="" placeholder="Add Password"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+						title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -46,7 +56,9 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Confirmation">
+						<input class="input100" type="password" name="password" value="" placeholder="Confirmation"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+						title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
