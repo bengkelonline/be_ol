@@ -132,7 +132,7 @@ span {
 }
 
 .back-to-top:hover {
-  background: #007acc;
+  background: #55b03f;
   color: #fff;
 }
 
@@ -1046,7 +1046,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 #pricing .block-pricing .table .table_btn a:hover {
-  background: #007acc;
+  background: #55b03f;
 }
 
 #pricing .block-pricing .table .table_btn a .fa {
@@ -1115,7 +1115,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 /* Newsletter Section
 --------------------------------*/
 #newsletter {
-  background: transparent url(../img/bengkel.jpg) no-repeat center top fixed;
+  background: transparent url(../img/newsletter-bg.jpg) no-repeat center top fixed;
   background-size: cover;
 }
 
@@ -1167,7 +1167,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 #newsletter .btn:hover {
-  background: #007acc;
+  background: #55b03f;
 }
 
 #newsletter .btn .fa {
@@ -1193,7 +1193,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 #newsletter ul li:hover {
-  background: #007acc;
+  background: #55b03f;
 }
 
 #newsletter ul li .fa {
@@ -1246,7 +1246,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 #contact .social-links a:hover {
-  background: #007acc;
+  background: #55b03f;
   color: #fff;
 }
 
@@ -1299,7 +1299,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 #contact .form button[type="submit"]:hover {
-  background: #007acc;
+  background: #92d283;
 }
 
 /*--------------------------------------------------------------
