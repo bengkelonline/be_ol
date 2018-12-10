@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 07:08 AM
+-- Generation Time: Dec 10, 2018 at 06:12 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -179,12 +179,12 @@ CREATE TABLE `tb_oli` (
 --
 
 INSERT INTO `tb_oli` (`id_oli`, `nama_oli`, `harga`, `kategori`, `jml_stok`) VALUES
-(1, 'AHM', 45000, 'bebek', 8),
-(2, 'AHM SPX', 49500, 'sport', 12),
-(4, 'AHM SPX-HX', 45000, 'bebek', 0),
-(5, 'AHM SPORT', 56000, 'sport', 0),
-(6, 'MPX 1 (Maximum Protection Expert)', 49500, 'bebek', 0),
-(7, 'AHM Transmisi', 15000, 'matic', 0);
+(1, 'AHM', 45000, 'bebek', 2),
+(2, 'AHM SPX', 49500, 'sport', 4),
+(4, 'AHM SPX-HX', 45000, 'bebek', 6),
+(5, 'AHM SPORT', 56000, 'sport', 6),
+(6, 'MPX 1 (Maximum Protection Expert)', 49500, 'bebek', 6),
+(7, 'AHM Transmisi', 15000, 'matic', 6);
 
 -- --------------------------------------------------------
 
@@ -195,13 +195,14 @@ INSERT INTO `tb_oli` (`id_oli`, `nama_oli`, `harga`, `kategori`, `jml_stok`) VAL
 CREATE TABLE `tb_transaksi` (
   `kode_transaksi` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `alamat` text NOT NULL,
-  `no_telfon` varchar(13) NOT NULL,
+  `id_oli` int(11) NOT NULL,
+  `model` enum('Matic','Sport','Bebek') NOT NULL,
   `nama_kendaraan` tinytext NOT NULL,
   `tahun` varchar(4) NOT NULL,
   `no_polisi` varchar(13) NOT NULL,
-  `km` int(5) NOT NULL,
-  `tgl_transaksi` date NOT NULL,
+  `km` int(11) NOT NULL,
+  `tgl_transaksi` datetime NOT NULL,
+  `total_harga` int(11) NOT NULL,
   `status` enum('Lunas','Belum Lunas') NOT NULL,
   `bukti_pembayaran` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -210,8 +211,21 @@ CREATE TABLE `tb_transaksi` (
 -- Dumping data for table `tb_transaksi`
 --
 
-INSERT INTO `tb_transaksi` (`kode_transaksi`, `id_user`, `alamat`, `no_telfon`, `nama_kendaraan`, `tahun`, `no_polisi`, `km`, `tgl_transaksi`, `status`, `bukti_pembayaran`) VALUES
-(1, 1, 'jl karimata', '086235213', 'vario 150', '2016', 'NG 70 DD', 2000, '2018-11-14', 'Lunas', '');
+INSERT INTO `tb_transaksi` (`kode_transaksi`, `id_user`, `id_oli`, `model`, `nama_kendaraan`, `tahun`, `no_polisi`, `km`, `tgl_transaksi`, `total_harga`, `status`, `bukti_pembayaran`) VALUES
+(21, 2, 2, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 38000, '2018-12-09 00:00:00', 69500, 'Belum Lunas', ''),
+(22, 2, 6, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 38000, '2018-12-09 00:00:00', 69500, 'Belum Lunas', ''),
+(23, 2, 5, 'Sport', 'Vario 150', '2014', 'P 2980 RD', 36000, '2018-12-09 00:00:00', 76000, 'Belum Lunas', ''),
+(24, 2, 1, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 8000, '2018-12-09 00:00:00', 65000, 'Belum Lunas', ''),
+(26, 2, 1, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 1000, '2018-12-09 00:00:00', 65000, 'Belum Lunas', ''),
+(31, 2, 2, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 18000, '2018-12-09 00:00:00', 69500, 'Belum Lunas', ''),
+(32, 2, 2, 'Sport', 'Vario 150', '2017', 'P 2980 RD', 10000, '2018-12-09 00:00:00', 69500, 'Belum Lunas', ''),
+(36, 2, 1, 'Matic', 'Vario 150', '2018', 'P 2980 RD', 4000, '2018-12-09 00:00:00', 65000, 'Belum Lunas', ''),
+(37, 1, 2, 'Matic', 'ads', '2017', 'P 2980 RD', 2000, '2018-12-09 00:00:00', 75000, 'Belum Lunas', ''),
+(38, 2, 1, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 10000, '2018-12-09 23:49:03', 65000, 'Belum Lunas', ''),
+(39, 2, 2, 'Matic', 'Vario 150', '2018', 'P 2980 RD', 22000, '2018-12-10 09:01:26', 69500, 'Belum Lunas', ''),
+(40, 1, 2, 'Matic', 'Vario 150', '2018', 'P 2980 RD', 20000, '2018-12-10 09:52:18', 69500, 'Belum Lunas', ''),
+(41, 1, 1, 'Matic', 'Vario 150', '2017', 'P 2980 RD', 34000, '2018-12-10 09:56:01', 65000, 'Belum Lunas', ''),
+(42, 1, 1, 'Matic', 'Vario 150', '2018', 'P 2980 RD', 20000, '2018-12-10 09:57:54', 65000, 'Belum Lunas', '');
 
 -- --------------------------------------------------------
 
@@ -286,7 +300,11 @@ ALTER TABLE `tb_oli`
 --
 ALTER TABLE `tb_transaksi`
   ADD PRIMARY KEY (`kode_transaksi`),
-  ADD UNIQUE KEY `id_kendaraan` (`id_user`);
+  ADD UNIQUE KEY `id_user_2` (`id_oli`,`km`),
+  ADD KEY `km` (`km`),
+  ADD KEY `id_oli` (`id_oli`),
+  ADD KEY `km_2` (`km`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_user`
@@ -326,7 +344,7 @@ ALTER TABLE `tb_oli`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `kode_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kode_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
@@ -342,14 +360,7 @@ ALTER TABLE `tb_user`
 -- Constraints for table `tb_dtl_trans`
 --
 ALTER TABLE `tb_dtl_trans`
-  ADD CONSTRAINT `tb_dtl_trans_ibfk_1` FOREIGN KEY (`id_oli`) REFERENCES `tb_oli` (`id_oli`),
-  ADD CONSTRAINT `tb_dtl_trans_ibfk_2` FOREIGN KEY (`kode_transaksi`) REFERENCES `tb_transaksi` (`kode_transaksi`);
-
---
--- Constraints for table `tb_transaksi`
---
-ALTER TABLE `tb_transaksi`
-  ADD CONSTRAINT `tb_transaksi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `tb_dtl_trans_ibfk_1` FOREIGN KEY (`id_oli`) REFERENCES `tb_oli` (`id_oli`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
