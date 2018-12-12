@@ -26,7 +26,7 @@
   <link href="lib/modal-video/css/modal-video.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css1/style.css" rel="stylesheet">
+  <link href="css_user/style2.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: eStartup
@@ -34,6 +34,7 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -50,17 +51,12 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#testimonials">Home</a></li>
-          <li class="menu-has-children"><a href="">Service</a>
-            <ul>
-              <li><a href="#get-started">Service Berkala</a></li>
-              <li><a href="#get-started">Riwayat Service</a></li>
-            </ul>
-          </li>
-          <li><a href="#team">Info Sparepart dan Oli</a></li>
           <li><a href="#about-us">About Us</a></li>
-          <li><a href="#team">Help</a></li>
-          <li><a href="">MASUK</a></li>
-          <li><a href="">DAFTAR</a></li>
+          <li><a href="#team">Info Sparepart dan Oli</a></li>
+          <li><a href="#contact">Help</a></li>
+          <li><a href=""></a></li>
+          <li><a href="#newsletter">MASUK</a></li>
+          <!-- <li><a href="">DAFTAR</a></li> -->
           <!-- <li><a href="" class="table_btn">Daftar</a></li> -->
           <!-- <li><a href="" class="btn-get-started scrolto">Masuk</a></li> -->
       </nav><!-- #nav-menu-container -->
@@ -125,27 +121,36 @@
           </div>
         </div>
         <div class="col-md-4">
-          <h1>Welcome</h1>
-          <h3>Deskripsi</h3>
+          <h1>Welcome to BeOl</h1>
+          <br>
+          <p> Beol merupakan bengkel online yang melayani service ringan seperti Tune Up di wilayah Kaliwates, Jember.
+          Bengkel milik MAN 1 Jember yang masih berkembang namun mempunyai kinerja yang cukup baik.
+          Bengkel online akan memudahkan pelanggan dalam melakukan service ringan sehingga tidak perlu repot-repot membawa motornya ke bengkel.
+          Bengkel online sudah mampu membangun sebuah system manajemen perbengkelan yang baik.
+          Manajemen yang baik akan stabil jika didukung oleh fasilitas yang memadai.
+          Fasilitas yang dimiliki Bengkel Online elah memenuhi standar equipment automotive services dengan teknologi mutakhir.</p>  
         </div>
-       </div>
+      </div>
     </div>
-  </section>
+</section>
   <!-- ==========================
     Get Started Section
   ============================
    -->
    <section id="newsletter" class="newsletter text-center wow fadeInUp">
     <div class="overlay padd-section">
-        <div class="container">
-          <div class="navbar">
-            <div class="nav nav-tabs">
-                <li class="active"><a href="" class="fa fa-gear">Service Berkala</a></li>
-                <li><a href="" class="fa fa-book">Riwayat Service</a></li>
-          </div>
+      <div id="hero" class="wow fadeIn">
+        <div class="hero-container">
+          <h1 style=" color :#004d99">Bengkel Online</h1>
+      <h2 style="color : #0066cc">qwertyuiopasdfghjklzxcvbnm</h2>
+      <!-- <img src="img/hero-img.png" alt="Hero Imgs"> -->
+          <div class="col-md-6 col-md-4 col-lg-3">
+            <a href="login/login.php" class="btn-get-started scrollto">User</a>
+            <a href="login/login_admin.php" class="btn-get-started scrollto">Admin</a>
         </div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- ==========================
@@ -167,11 +172,11 @@
             </p> -->
 
             <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i>Creative Design</li>
-              <li><i class="fa fa-angle-right"></i>Retina Ready</li>
-              <li><i class="fa fa-angle-right"></i>Easy to Use</li>
-              <li><i class="fa fa-angle-right"></i>Unlimited Features</li>
-              <li><i class="fa fa-angle-right"></i>Unlimited Features</li>
+              <li><i class="fa fa-angle-right"></i>Layanan cepat dan terjamin</li>
+              <li><i class="fa fa-angle-right"></i>Penawaran harga yang terjangkau</li>
+              <li><i class="fa fa-angle-right"></i>Lebih efektif dan efisien</li>
+              <li><i class="fa fa-angle-right"></i>Sistem pemesanan layanan cepat dan instan</li>
+              <!-- <li><i class="fa fa-angle-right"></i></li> -->
             </ul>
 
           </div>
@@ -183,88 +188,7 @@
 
   <!--==========================
     Features Section
-  ============================
-
-  <section id="features" class="padd-section text-center wow fadeInUp">
-
-    <div class="container">
-      <div class="section-title text-center">
-        <h2>Amazing Features.</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/paint-palette.svg" alt="img" class="img-fluid">
-            <h4>creative design</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/vector.svg" alt="img" class="img-fluid">
-            <h4>Retina Ready</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/design-tool.svg" alt="img" class="img-fluid">
-            <h4>easy to use</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/asteroid.svg" alt="img" class="img-fluid">
-            <h4>Free Updates</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/asteroid.svg" alt="img" class="img-fluid">
-            <h4>Free Updates</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/cloud-computing.svg" alt="img" class="img-fluid">
-            <h4>App store support</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/pixel.svg" alt="img" class="img-fluid">
-            <h4>Perfect Pixel</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-block">
-            <img src="img/svg/code.svg" alt="img" class="img-fluid">
-            <h4>clean codes</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+  ============================-->
   <!--==========================
     Screenshots Section
   ============================-->
@@ -300,6 +224,7 @@
 
     <div class="container">
       <div class="row">
+        <div class="col-md-6 col-md-4 col-lg-3"></div>
 
         <div class="col-md-6 col-md-4 col-lg-3">
           <div class="team-block bottom">
@@ -307,18 +232,7 @@
             <div class="team-content">
               <h4>Oli</h4>
               <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
+              <a href="Sparepart.php" class="btn">Lihat</a>
             </div>
           </div>
         </div>
@@ -335,60 +249,8 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
+        <div class="col-md-6 col-md-4 col-lg-3"></div>
 
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-md-4 col-lg-3">
-          <div class="team-block bottom">
-            <img src="img/22296.png" class="img-responsive" alt="img">
-            <div class="team-content">
-              <h4>Oli</h4>
-              <span></span>
-              <a href="" class="btn">Lihat</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -398,7 +260,7 @@
     Testimonials Section
   ============================-->
 
-  <section id="testimonials" class="padd-section text-center wow fadeInUp">
+  <!-- <section id="testimonials" class="padd-section text-center wow fadeInUp">
     <div class="container">
       <div class="row justify-content-center">
 
@@ -461,7 +323,7 @@
       </div>
     </div>
   </section>
-
+ -->
   <!--==========================
     Pricing Table Section
   ============================-->
@@ -472,7 +334,7 @@
   <section id="blog" class="padd-section wow fadeInUp">
 
     <div class="container">
-      <div class="section-title text-center">
+      <!-- <div class="section-title text-center">
 
         <h2>Latest posts</h2>
         <p class="separator">Integer cursus bibendum augue ac cursus .</p>
@@ -516,7 +378,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -539,26 +401,35 @@
     <div class="container">
       <div class="row justify-content-center">
 
-        <div class="col-lg-3 col-md-4">
-
+        <div class=" col-lg-3 col-md-4">
+            <!-- <div class="info">
+                <a href="" class="fa fa-map-marker"></a> 
+            </div> -->
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
               <p>A108 Adam Street<br>New York, NY 535022</p>
             </div>
-
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4"> 
+          <div class="info">
             <div class="email">
               <i class="fa fa-envelope"></i>
               <p>info@example.com</p>
             </div>
-
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <div class="info">
             <div>
               <i class="fa fa-phone"></i>
               <p>+1 5589 55488 55s</p>
             </div>
           </div>
+        </div>
 
-          <div class="social-links">
+          <!-- <div class="social-links">
             <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
             <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
             <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -571,8 +442,8 @@
         <div class="col-lg-5 col-md-8">
           <div class="form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
-            <div id="errormessage"></div>
-            <form action="" method="post" role="form" class="contactForm">
+            <div id="errormessage"></div> -->
+            <!-- <form action="" method="post" role="form" class="contactForm">
               <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                 <div class="validation"></div>
@@ -590,7 +461,7 @@
                 <div class="validation"></div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            </form> -->
           </div>
         </div>
       </div>
@@ -661,7 +532,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4>Abou Us</h4>
+            <h4>About Us</h4>
 
             <ul class="list-unstyled">
               <li><a href="#">About us</a></li>
@@ -711,7 +582,7 @@
   <script src="contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js1/main.js"></script>
+  <script src="js_user/main.js"></script>
 
 </body>
 </html>
