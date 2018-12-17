@@ -23,7 +23,7 @@
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main0.css" rel="stylesheet" media="all">
+    <link href="css/main1.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -89,6 +89,31 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
+                                    <label class="label">Pertanyaan Verifikasi</label>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="pertanyaan">
+                                            <option disabled="disabled" selected="selected">--pilih--</option>
+                                            <option>Siapakah nama ibu anda ?</option>
+                                            <option>Apa club sepakbola favorit anda ?</option>
+                                            <option>Siapakah nama pacar anda ?</option>
+                                            <option>Apa film kesukaan anda ?</option>
+                                            <option>Siapakah nama ibu guru favorit anda ?</option>
+                                            <option>Anda berapa bersaudara ?</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Jawaban</label>
+                                    <input class="input--style-4" type="text" name="jawaban" placeholder="Jawaban">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
                                     <label class="label">Email</label>
                                     <input class="input--style-4" type="email" name="email" placeholder="Email">
                                 </div>
@@ -100,18 +125,10 @@
                                 </div>
                             </div>
                         </div>
-                       <!-- <div class="input-group">
-                            <label class="label">Subject</label>
-                           <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
-                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>Subject 1</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>-->
+                        <div>
+                            <label class="label">Upload Foto</label>
+                            <input type="file" name="upload">
+                        </div>
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit" name="submit">Submit</button>
                         </div>

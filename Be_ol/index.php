@@ -26,7 +26,7 @@
   <link href="lib/modal-video/css/modal-video.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css_user/style2.css" rel="stylesheet">
+  <link href="css_user/style3.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: eStartup
@@ -43,9 +43,9 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="index.php" class="scrollto"><span>Be</span>Ol</a></h1>
+        <!-- <h1><a href="index.php" class="scrollto"><span>Be</span>Ol</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+         <a href="index.php"><img src="images/Beol2.png" alt="" title="" /></a>
       </div>
 
       <nav id="nav-menu-container">
@@ -78,31 +78,31 @@
 
                 <div class="carousel-item  active">
                   <div class="top-top">
-                    <img src="images/bg-title-01.jpg" class="img-responsive" width="100%" height="100%">
-                    <div class="carousel-caption">
+                    <img src="img/bengkel.jpg" class="img-responsive" width="100%" height="100%">
+                    <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
                 <div class="carousel-item ">
                   <div class="top-top">
-                    <img src="images/bg-title-02.jpg" class="img-responsive" width="100%" height="100%">  
-                    <div class="carousel-caption">
+                    <img src="img/gambar_bengkel.jpg" class="img-responsive" width="100%" height="100%">  
+                    <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
                 <div class="carousel-item ">
                   <div class="top-top">
-                      <img src="images/bg-title-01.jpg" class="img-responsive" width="100%" height="100%">
-                      <div class="carousel-caption">
+                      <img src="img/bengkel.jpg" class="img-responsive" width="100%" height="100%">
+                      <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
@@ -232,7 +232,7 @@
             <div class="team-content">
               <h4>Oli</h4>
               <span></span>
-              <a href="Sparepart.php" class="btn">Lihat</a>
+              <a href="info_oli.php" class="btn">Lihat</a>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@
             <div class="team-content">
               <h4>Sparepart</h4>
               <span></span>
-              <a href="" class="btn">Lihat</a>
+              <a href="info_sparepart.php" class="btn">Lihat</a>
             </div>
           </div>
         </div>

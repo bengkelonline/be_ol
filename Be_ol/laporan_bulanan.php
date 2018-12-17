@@ -1,6 +1,13 @@
 <?php
-    include("config.php");
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_admin_username'])) {
+    # code...
+    header("location : Login/login_admin.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +52,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -61,28 +68,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -97,8 +117,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -106,28 +126,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -158,8 +191,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -170,16 +207,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -196,79 +239,122 @@
                     <div class="container-fluid">
                         <div class="row m-t-30">
                             <div class="col-md-12">
-                                <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
-                                        <thead>
+                                <!-- USER DATA-->
+                                <div class="user-data m-b-30">
+                                    <h3 class="title-3 m-b-30">
+                                        <i class="zmdi zmdi-account-calendar"></i>Laporan Bulanan</h3>
+                                        <form method="get">
+                                            <div class="row form-group">
+                                                <div class="filters m-b-45">
+                                                    <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                                        <select class="js-select2" name="bulan" required="required">
+                                                            
+                                                            <option value="01">Januari</option>
+                                                            <option value="02">Februari</option>
+                                                            <option value="03">Maret</option>
+                                                            <option value="04">April</option>
+                                                            <option value="05">Mei</option>
+                                                            <option value="06">Juni</option>
+                                                            <option value="07">Juli</option>
+                                                            <option value="08">Agustus</option>
+                                                            <option value="09">September</option>
+                                                            <option value="10">Oktober</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">Desember</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                                        <select class="js-select2 au-select-dark" name="tahun" required="required">
+                                                            
+                                                            <?php 
+                                                            $qry=mysqli_query($connect, "SELECT tgl_transaksi FROM tb_transaksi GROUP BY year(tgl_transaksi)");
+                                                                while($t=mysqli_Fetch_array($qry)){
+                                                                $data = explode('-',$t['tgl_transaksi']);
+                                                                $tahun = $data[0];
+                                                                echo "<option value='$tahun'>$tahun</option>";
+
+                                                                }
+                                                                echo ""
+                                                                ?>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">     
+                                                    <button class="au-btn-filter" name="filter">
+                                                        <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    <div class="table-responsive table-data">
+                                        <table class="table">
+                                            <thead>
                                             <tr>
-                                                <th>date</th>
-                                                <th>type</th>
-                                                <th>description</th>
-                                                <th>status</th>
-                                                <th>price</th>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Alamat</th>
+                                                <th>No.Telepon</th>
+                                                <th>Nama Barang</th>
+                                                <th>Kategori</th>
+                                                <th>Harga Satuan</th>
+                                                <th>Tipe Kendaraan</th>
+                                                <th>Nama Kendaraan</th>
+                                                <th>No.Polisi</th>
+                                                <th>Km</th>
+                                                <th>Harga Service</th>
+                                                <th>Tanggal Transaksi</th>
+                                                <th>Total Harga</th>
+                                                <th>Status Proses</th>
+                                                <th>Jenis Pembayaran</th>
+                                                <th>Status Pembayaran</th>
+                                                <th>Bukti Pembayaran</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php 
+                                                if (isset($_GET['filter'])) {
+                                                $bulan = $_GET['bulan'];
+                                                $tahun = $_GET['tahun'];
+                                                    # code...
+                                                    $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km && month(tb_transaksi.tgl_transaksi)='$bulan' and year(tb_transaksi.tgl_transaksi) = '$tahun' ORDER BY kode_transaksi ASC");
+                                                }else{
+                                                    $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km ORDER BY kode_transaksi ASC");
+                                                }
+                                            ?>
+                                            <?php 
+                                                $no = 1;
+                                                while ($sql = mysqli_fetch_array($query)) {
+                                             ?>
                                             <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Mobile</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="process">Processed</td>
-                                                <td>$999.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-28 01:22</td>
-                                                <td>Mobile</td>
-                                                <td>Samsung S8 Black</td>
-                                                <td class="process">Processed</td>
-                                                <td>$756.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-27 02:12</td>
-                                                <td>Game</td>
-                                                <td>Game Console Controller</td>
-                                                <td class="denied">Denied</td>
-                                                <td>$22.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-26 23:06</td>
-                                                <td>Mobile</td>
-                                                <td>iPhone X 256Gb Black</td>
-                                                <td class="denied">Denied</td>
-                                                <td>$1199.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-25 19:03</td>
-                                                <td>Accessories</td>
-                                                <td>USB 3.0 Cable</td>
-                                                <td class="process">Processed</td>
-                                                <td>$10.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Accesories</td>
-                                                <td>Smartwatch 4.0 LTE Wifi</td>
-                                                <td class="denied">Denied</td>
-                                                <td>$199.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-24 19:10</td>
-                                                <td>Camera</td>
-                                                <td>Camera C430W 4k</td>
-                                                <td class="process">Processed</td>
-                                                <td>$699.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-22 00:43</td>
-                                                <td>Computer</td>
-                                                <td>Macbook Pro Retina 2017</td>
-                                                <td class="process">Processed</td>
-                                                <td>$10.00</td>
-                                            </tr>
+                                                <td><?php echo $no ?></td>
+                                                <td><?php echo $sql['nama'] ?></td>
+                                                <td><?php echo $sql['alamat'] ?></td>
+                                                <td><?php echo $sql['no_telfon'] ?></td>
+                                                <td><?php echo $sql['nama_oli'] ?></td>
+                                                <td><?php echo $sql['kategori'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['harga'] ?></td>
+                                                <td><?php echo $sql['model'] ?></td>
+                                                <td><?php echo $sql['nama_kendaraan'] ?></td>
+                                                <td><?php echo $sql['no_polisi'] ?></td>
+                                                <td><?php echo $sql['km'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['harga'] ?></td>
+                                                <td><?php echo $sql['tgl_transaksi'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['total_harga'] ?></td>
+                                                <td><?php echo $sql['status_proses'] ?></td>
+                                                <td><?php echo $sql['jenis_pembayaran'] ?></td>
+                                                <td><?php echo $sql['status'] ?></td>
+                                                <td><?php echo $sql['bukti_pembayaran'] ?></td>
+                                            </tr><?php $no++; 
+                                        } ?>
                                         </tbody>
-                                    </table>
+                                        </table>
+                                    </div>
+                                    <div class="user-data__footer">
+                                        <button class="au-btn au-btn-load">load more</button>
+                                    </div>
                                 </div>
-                                <!-- END DATA TABLE-->
+                                <!-- END USER DATA-->
                             </div>
                         </div>
                         <div class="row">

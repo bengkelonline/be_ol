@@ -1,3 +1,12 @@
+<?php
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_admin_username'])) {
+    # code...
+    header("location : Login/login_admin.php");
+  }
+?>
 <?php 
     include("config.php");
     $query = mysqli_query($connect, "SELECT * FROM tb_user ORDER BY id_user ASC");
@@ -46,8 +55,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -62,28 +71,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -98,8 +120,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -107,28 +129,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -159,8 +194,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -171,16 +210,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -277,6 +322,230 @@
                                                     <td>
                                                         <?php
                                                             echo $user["email"];
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                                 <?php }
+                                                    // $sql = mysqli_query($connect, "SELECT * FROM tb_user");
+                                                    // while ($user = mysql_fetch_array($sql)) {
+                                                    //     # code...
+                                                    //     echo "<tr>";
+
+                                                    //     echo "<td>".$user['id_user']."</td>";
+                                                    //     echo "<td>".$user['nama']."</td>";
+                                                    //     echo "<td>".$user['jenis_kelamin']."</td>";
+                                                    //     echo "<td>".$user['tgl_lahir']."</td>";
+                                                    //     echo "<td>".$user['no_telfon']."</td>";
+                                                    //     echo "<td>".$user['alamat']."</td>";
+                                                    //     echo "<td>".$user['email']."</td>";
+
+                                                    //     echo "</tr>";
+                                                    // }
+                                                ?>
+                                                <!-- <tr>
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data__info">
+                                                            <h6>lori lynch</h6>
+                                                            <span>
+                                                                <a href="#">johndoe@gmail.com</a>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="role admin">admin</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="rs-select2--trans rs-select2--sm">
+                                                            <select class="js-select2" name="property">
+                                                                <option selected="selected">Full Control</option>
+                                                                <option value="">Post</option>
+                                                                <option value="">Watch</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="more">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox" checked="checked">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data__info">
+                                                            <h6>lori lynch</h6>
+                                                            <span>
+                                                                <a href="#">johndoe@gmail.com</a>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="role user">user</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="rs-select2--trans rs-select2--sm">
+                                                            <select class="js-select2" name="property">
+                                                                <option value="">Full Control</option>
+                                                                <option value="" selected="selected">Post</option>
+                                                                <option value="">Watch</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="more">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data__info">
+                                                            <h6>lori lynch</h6>
+                                                            <span>
+                                                                <a href="#">johndoe@gmail.com</a>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="role user">user</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="rs-select2--trans rs-select2--sm">
+                                                            <select class="js-select2" name="property">
+                                                                <option value="">Full Control</option>
+                                                                <option value="" selected="selected">Post</option>
+                                                                <option value="">Watch</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="more">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data__info">
+                                                            <h6>lori lynch</h6>
+                                                            <span>
+                                                                <a href="#">johndoe@gmail.com</a>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="role member">member</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="rs-select2--trans rs-select2--sm">
+                                                            <select class="js-select2" name="property">
+                                                                <option selected="selected">Full Control</option>
+                                                                <option value="">Post</option>
+                                                                <option value="">Watch</option>
+                                                            </select>
+                                                            <div class="dropDownSelect2"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="more">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </span>
+                                                    </td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="user-data__footer">
+                                        <button class="au-btn au-btn-load">load more</button>
+                                    </div>
+                                </div>
+                                <!-- END USER DATA-->
+                                <!-- USER DATA-->
+                                <div class="user-data m-b-30">
+                                    <h3 class="title-3 m-b-30">
+                                        <i class="zmdi zmdi-account-calendar"></i>admin data</h3>
+                                    <div class="filters m-b-45">
+                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                            <select class="js-select2" name="property">
+                                                <option selected="selected">All Properties</option>
+                                                <option value="">Products</option>
+                                                <option value="">Services</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                            <select class="js-select2 au-select-dark" name="time">
+                                                <option selected="selected">All Time</option>
+                                                <option value="">By Month</option>
+                                                <option value="">By Day</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table-data">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <!-- <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td> -->
+                                                    <td>ID</td>
+                                                    <td>Nama</td>
+                                                    <td>Username</td>
+                                                    <!-- <td></td> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    include("config.php");
+                                                    $sql = mysqli_query($connect, "SELECT * FROM tb_admin ORDER BY id_admin ASC");
+                                                ?>
+                                                <?php
+                                                    while ($use = mysqli_fetch_array($sql)){
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php
+                                                            echo $use["id_admin"];
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                            echo $use["nama"];
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                            echo $use["username"];
                                                         ?>
                                                     </td>
                                                 </tr>

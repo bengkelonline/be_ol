@@ -42,7 +42,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util0.css">
-	<link rel="stylesheet" type="text/css" href="css/main0.css">
+	<link rel="stylesheet" type="text/css" href="css/main2.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -82,12 +82,9 @@
 					</div>
 					<?php
 						if (isset($_GET['login-gagal'])) {?>
-							<div>
-								<br>
-								<center><p>
-									Email / Password anda salah !!!
-								</p></center>
-							</div>
+							<script>
+									alert("Email / Password anda salah !!!");
+							</script>
 					<?php
 						}
 					?>

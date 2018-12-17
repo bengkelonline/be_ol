@@ -51,8 +51,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -67,29 +67,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
+                        </li>
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -104,8 +116,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -113,29 +125,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
+                        </li>
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -166,8 +190,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -178,31 +206,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <!-- <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
-                                            </div> -->
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

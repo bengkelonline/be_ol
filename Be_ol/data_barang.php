@@ -1,4 +1,13 @@
 <?php
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_admin_username'])) {
+    # code...
+    header("location : Login/login_admin.php");
+  }
+?>
+<?php
     include("config.php");
     $query = mysqli_query($connect, "SELECT * FROM tb_oli ORDER BY id_oli ASC");
 ?>
@@ -46,8 +55,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -62,29 +71,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
+                        </li>
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -99,8 +120,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -108,29 +129,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
+                        </li>
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -161,8 +194,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -173,16 +210,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -239,21 +282,23 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th> -->
-                                                <th>ID</th>
+                                                <th>No</th>
                                                 <th>NAMA OLI</th>
                                                 <th>Harga</th>
                                                 <th>KATEGORI</th>
                                                 <th>STOK</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
+                                            <?php   
+                                                    $no = 1;
                                                     while ($oli = mysqli_fetch_array($query)){
                                                 ?>
                                                 <tr>
                                                     <td>
                                                         <?php
-                                                            echo $oli["id_oli"];
+                                                            echo $no;
                                                         ?>
                                                     </td>
                                                     <td>
@@ -274,13 +319,80 @@
                                                     <td>
                                                         <?php
                                                             echo $oli["jml_stok"];
+                                                            if ($oli['jml_stok']<=10) {
+                                                                # code...
+                                                                echo "
+                                                                <script>
+                                                                    alert('Stok $oli[nama_oli]<=10');
+                                                                </script>";
+                                                            }
                                                         ?>
                                                     </td>
-                                                <?php }?>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <a href="#smallmodal3" class="item" data-toggle="modal" data-placement="top" name="edit" data-id="<?php echo $oli['id_oli'] ?>" title="Edit">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </a>
+                                                            <a href="hapus_databarang.php?id=<?php echo $oli['id_oli'] ?>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <?php 
+                                                $no++;
+                                                }?>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE-->
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nama Oli</th>
+                                                <th>Nama Admin</th>
+                                                <th>Tanggal</th>
+                                                <th>Jumlah masuk</th>
+                                                <!-- <th></th> -->
+                                            </tr>
+                                        </thead>
+                                        <?php 
+                                            include("config.php");
+                                            $l = mysqli_query($connect, "SELECT dtl.id_detail, oli.nama_oli, adm.nama,dtl.tanggal, dtl.stok FROM tb_dtl_oli as dtl, tb_admin as adm, tb_oli as oli WHERE dtl.id_oli = oli.id_oli");
+                                        ?>
+                                         <?php 
+                                            while ($m = mysqli_fetch_array($l)) {
+                                         ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $m['id_detail'] ?></td>
+                                                <td><?php echo $m['nama_oli'] ?></td>
+                                                <td><?php echo $m['nama'] ?></td>
+                                                <td><?php echo $m['tanggal'] ?></td>
+                                                <td><?php echo $m['stok'] ?></td>
+                                                <!-- <td>
+                                                    <div class="table-data-feature">
+                                                            <button class="item" data-toggle="modal" data-id ="<?php echo $m['id_detail'] ?>" data-placement="top" title="Edit" data-target="#smallmodal4">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                        </div>
+                                                </td> -->
+                                            </tr>
+                                        <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE-->
                             </div>
                         </div>
                         <div class="row">
@@ -318,9 +430,9 @@
                                 <div class="rs-select2--light rs-select2--md">
                                     <select class="js-select2" name="kategori">
                                         <option selected="selected" disabled="disabled">Kategori</option>
-                                        <option value="bebek">bebek</option>
-                                        <option value="sport">sport</option>
-                                        <option value="matic">matic</option>
+                                        <option>bebek</option>
+                                        <option>sport</option>
+                                        <option>matic</option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -349,6 +461,11 @@
                         <div class="modal-body">
                             <form action="insert_det_barang.php" method="post" >
                                 <div class="form-group">
+                                    <label for="nama" class="form-control-label">Nama</label>
+                                    <input type="hidden" id="id_adm" name="id_adm" value="<?php echo $_SESSION['tb_admin_id_admin'] ?>" class="form-control">
+                                    <input type="text" name="nama" value="<?php echo $w['nama'] ?>" class="form-control" disabled>
+                                </div>
+                                <div class="form-group">
                                     <label for="nama_oli" class=" form-control-label">Nama Barang</label>
                                     <div class="rs-select2--light rs-select2--md">
                                         <select class="js-select2" name="oli">
@@ -368,21 +485,84 @@
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
-                                    <!-- <input type="nama_oli" id="nama_oli" name="nama_oli" placeholder="Nama Barang" class="form-control"> -->
-                                    <!-- <span class="help-block"></span> -->
                                 </div>
                                 <!-- <div class="form-group">
-                                    <label for="jumlah_stok" class="form-control-label
-                                    "> Jumlah stok yang tersedia</label>
-                                    <span class="help-block"></span>
-                                    <input type="text" name="jumlah_stok" class="form-control" disabled="disabled"/>
+                                    <label for="tanggal" class="form-control-label">Tanggal</label>
+                                    <input type="date" name="tanggal" id="tanggal" class="form-control">
                                 </div> -->
                                 <div class="form-group">
                                     <label for="stok" class=" form-control-label">Stok</label>
                                     <span class="help-block"></span>
                                     <input type="text" id="stok" name="stok" placeholder="Stok" class="form-control">
                                 </div>
-
+                            <button type="submit" class="btn btn-primary" name="tambah">Confirm</button>
+                            <!-- <input type="submit" class="btn btn-primary" data-dismiss="modal" name="tambah"> -->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal scroll -->
+            <!-- modal scroll -->
+            <div class="modal fade" id="smallmodal3" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" method="post">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Tambah Stok Barang</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="update_barang.php" method="post" >
+                                <div class="hasil-data"></div>
+                            <button type="submit" class="btn btn-primary" name="tambah">Confirm</button>
+                            <!-- <input type="submit" class="btn btn-primary" data-dismiss="modal" name="tambah"> -->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal scroll -->
+            <!-- modal scroll -->
+            <div class="modal fade" id="smallmodal4" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" method="post">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Tambah Stok Barang</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" method="post" >
+                                <div class="form-group">
+                                    <label for="nama_barang" class=" form-control-label">Nama Barang</label>
+                                    <div class="rs-select2--light rs-select2--md">
+                                        <input type="text" name="id_oli" id=""> value="<?php echo $oli['id_oli'] ?>" class="form-control">
+                                        <input type="text" name="nama_barang" id="nama_barang" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="harga_barang" class=" form-control-label">Harga</label><br>
+                                    <div class="rs-select2--light rs-select2--md">
+                                        <input type="text" name="harga_barang" id="harga_barang" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kategori_barang" class=" form-control-label">Kategori</label><br>
+                                    <div class="rs-select2--light rs-select2--md">
+                                        <select class="js-select2" name="kategori_barang">
+                                            <option selected="selected" disabled="disabled">--pilih--</option>
+                                            <option>bebek</option>
+                                            <option>sport</option>
+                                            <option>matic</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
                             <button type="submit" class="btn btn-primary" name="tambah">Confirm</button>
                             <!-- <input type="submit" class="btn btn-primary" data-dismiss="modal" name="tambah"> -->
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -419,7 +599,19 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-
+    <script type="text/javascript">
+        $('#smallmodal3').on('show.bs.modal', function (e){
+            var idx = $(e.relatedTarget).data("id");
+            $.ajax({
+                type : 'post',
+                url : 'detail_barang.php',
+                data : 'idx='+ idx,
+                success :function(data){
+                    $('.hasil-data').html(data);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

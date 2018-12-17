@@ -55,8 +55,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -71,11 +71,11 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
                         <li>
                             <a href="info.php">
@@ -83,25 +83,29 @@
                         </li>
                         <li>
                             <a href="data_harga_service.php">
-                                <i class="fas  fa-table"></i>Data Harga Service</a>
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -116,8 +120,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -125,11 +129,11 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
                         <li>
                             <a href="info.php">
@@ -137,25 +141,29 @@
                         </li>
                         <li>
                             <a href="data_harga_service.php">
-                                <i class="fas  fa-table"></i>Data Harga Service</a>
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-table"></i>Laporan</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="laporan_harian.php">
-                                        <i class="fas fa-table"></i>Laporan Harian</a>
-                                </li>
-                                <li>
-                                    <a href="laporan_bulanan.php">
-                                        <i class="fas fa-table"></i>Laporan Bulanan</a>
-                                </li>
-                            </ul>  
-                        </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-file-text"></i>Laporan</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="laporan_harian.php">
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
+                                    </li>
+                                    <li>
+                                        <a href="laporan_bulanan.php">
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
+                                    </li>
+                                </ul>  
+                            </li>
                         <li>
                             <a href="data_barang.php">
-                                <i class="fas fa-table"></i>Data Barang</a>
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -186,8 +194,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -198,16 +210,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -302,15 +320,12 @@
                                                     </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                            <a href="#smallmodal1" data-id="<?php echo $info['id_info'] ?>" class="item" data-toggle="modal" data-placement="top" title="Edit">
                                                                 <i class="zmdi zmdi-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                            </a>
+                                                            <a href="hapus_info.php?id=<?php echo $info['id_info'] ?>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                                 <i class="zmdi zmdi-delete"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                <i class="zmdi zmdi-more"></i>
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -342,7 +357,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="#" method="post" >
+                            <form action="upload_info.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="nama" class=" form-control-label">Nama Barang</label>
                                     <input type="text" id="nama" name="nama" placeholder="Nama Barang" class="form-control">
@@ -364,11 +379,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="file" class="form-control-label">Gambar</label>
-                                    <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                    <input type="file" id="file" name="file" class="form-control-file">
                                 </div>
                                 <div class="form-group">
                                     <br>
-                                <button type="submit" class="btn btn-primary" name="tambah">Confirm</button>
+                                <button type="submit" class="btn btn-primary" name="tambah" class="tambah">Confirm</button>
                                 <!-- <input type="submit" class="btn btn-primary" data-dismiss="modal" name="tambah"> -->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>    
                                 </div>
@@ -379,55 +394,20 @@
             </div>
             <!-- end modal scroll -->
             <!-- modal scroll -->
-            <div class="modal fade" id="smallmodal2" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" method="post">
+            <div class="modal fade" id="smallmodal1" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true" method="post">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="smallmodalLabel">Tambah Stok Barang</h5>
+                            <h5 class="modal-title" id="smallmodalLabel">Tambah Info Oli dan Sparepart</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="insert_det_barang.php" method="post" >
-                                <div class="form-group">
-                                    <label for="nama_info" class=" form-control-label">Nama Barang</label>
-                                    <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="info">
-                                            <option selected="selected" disabled="disabled">--pilih--</option>
-                                            <?php
-                                            $q = mysqli_query($connect, "SELECT id_info, nama_info FROM tb_info");
-                                             while ($val = mysqli_fetch_array($q)){
-                                                ?>     
-                                            <option name="id" value="<?php echo $val['id_info'] ?>">
-                                                <?php
-                                                    echo $val["nama_info"];
-                                                ?>                
-                                            </option>
-                                            <?php
-                                                }
-                                            ?>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                    <!-- <input type="nama_info" id="nama_info" name="nama_info" placeholder="Nama Barang" class="form-control"> -->
-                                    <!-- <span class="help-block"></span> -->
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="jumlah_stok" class="form-control-label
-                                    "> Jumlah stok yang tersedia</label>
-                                    <span class="help-block"></span>
-                                    <input type="text" name="jumlah_stok" class="form-control" disabled="disabled"/>
-                                </div> -->
-                                <div class="form-group">
-                                    <label for="stok" class=" form-control-label">Stok</label>
-                                    <span class="help-block"></span>
-                                    <input type="text" id="stok" name="stok" placeholder="Stok" class="form-control">
-                                </div>
-
-                            <button type="submit" class="btn btn-primary" name="tambah">Confirm</button>
-                            <!-- <input type="submit" class="btn btn-primary" data-dismiss="modal" name="tambah"> -->
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <form action="edit_info_proses.php" method="post" enctype="multipart/form-data">
+                                <div class="hasil-data"></div>
+                                    <button type="submit" class="btn btn-primary" name="tambah" class="tambah">Confirm</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> 
                             </form>
                         </div>
                     </div>
@@ -435,7 +415,6 @@
             </div>
             <!-- end modal scroll -->
         </div>
-
     </div>
 
     <!-- Jquery JS-->
@@ -461,6 +440,19 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $('#smallmodal1').on('show.bs.modal', function (e){
+            var idx = $(e.relatedTarget).data("id");
+            $.ajax({
+                type : 'post',
+                url : 'edit_info.php',
+                data : 'idx='+ idx,
+                success :function(data){
+                    $('.hasil-data').html(data);
+                }
+            });
+        });
+    </script>
 
 </body>
 

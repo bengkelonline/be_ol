@@ -53,9 +53,9 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="index.php" class="scrollto"><span>Be</span>Ol</a></h1>
+        <!-- <h1><a href="index.php" class="scrollto"><span>Be</span>Ol</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+         <a href="index.php"><img src="images/Beol2.png" alt="" title="" /></a>
       </div>
 
       <nav id="nav-menu-container">
@@ -63,22 +63,26 @@
           <li class="menu-active"><a href="#testimonials">Home</a></li>
           <li class="menu-has-children"><a href="">Service</a>
             <ul>
-              <li><a href="#get-started">Service Berkala</a></li>
-              <li><a href="#get-started">Riwayat Service</a></li>
+              <li><a href="form_service.php">Service Berkala</a></li>
+              <li><a href="riwayat.php">Riwayat Service</a></li>
             </ul>
           </li>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#team">Info Sparepart dan Oli</a></li>
-          <li><a href="#team">Help</a></li>
+          <li><a href="#contact">Help</a></li>
           <li><a href=""></a></li>
           <li><a href=""></a></li>
+          <?php 
+            $wer = mysqli_query($connect, "select * from tb_user where id_user = '$_SESSION[tb_user_id_user]'");
+            $w = mysqli_fetch_assoc($wer);
+          ?>
           <li class="menu-has-children"><a href="">
             <?php
-              echo $_SESSION['tb_user_email'];
+              echo $w['nama'];
             ?>
           </a>
             <ul>
-              <li><a href="logout.php">Log Out</a></li>
+              <li><a href="logout.php">Logout</a></li>
             </ul>
           </li>
           <!-- <li><a href="" class="table_btn">Daftar</a></li> -->
@@ -89,6 +93,9 @@
 
   <!--==========================
     Hero Section
+  ============================-->
+   <!--==========================
+    Testimonials Section
   ============================-->
   <section id="testimonials" class="padd-section text-center wow fadeInUp">
     <div class="container">
@@ -102,31 +109,31 @@
 
                 <div class="carousel-item  active">
                   <div class="top-top">
-                    <img src="images/bg-title-01.jpg" class="img-responsive" width="100%" height="100%">
-                    <div class="carousel-caption">
+                    <img src="img/bengkel.jpg" class="img-responsive" width="100%" height="100%">
+                    <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
                 <div class="carousel-item ">
                   <div class="top-top">
-                    <img src="images/bg-title-02.jpg" class="img-responsive" width="100%" height="100%">  
-                    <div class="carousel-caption">
+                    <img src="img/gambar_bengkel.jpg" class="img-responsive" width="100%" height="100%">  
+                    <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
                 <div class="carousel-item ">
                   <div class="top-top">
-                      <img src="images/bg-title-01.jpg" class="img-responsive" width="100%" height="100%">
-                      <div class="carousel-caption">
+                      <img src="img/bengkel.jpg" class="img-responsive" width="100%" height="100%">
+                      <!-- <div class="carousel-caption">
                       <h3>gambar1</h3>
                       <p>gambar1fix</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
 
@@ -157,17 +164,7 @@
       </div>
     </div>
 </section>
-  <!-- ==========================
-    Get Started Section
-  ============================
-   -->
-   <section id="newsletter" class="newsletter text-center wow fadeInUp">
-    <div class="overlay padd-section">
-
-    </div>
-  </section>
-
-  <!-- ==========================
+<!-- ==========================
     About Us Section
   ============================ -->
   <section id="about-us" class="about-us padd-section wow fadeInUp">
@@ -190,6 +187,7 @@
               <li><i class="fa fa-angle-right"></i>Penawaran harga yang terjangkau</li>
               <li><i class="fa fa-angle-right"></i>Lebih efektif dan efisien</li>
               <li><i class="fa fa-angle-right"></i>Sistem pemesanan layanan cepat dan instan</li>
+              <!-- <li><i class="fa fa-angle-right"></i></li> -->
             </ul>
 
           </div>
@@ -198,7 +196,6 @@
       </div>
     </div>
   </section>
-
   <!--==========================
     Features Section
   ============================-->
@@ -245,7 +242,7 @@
             <div class="team-content">
               <h4>Oli</h4>
               <span></span>
-              <a href="Sparepart.php" class="btn">Lihat</a>
+              <a href="info_oli.php" class="btn">Lihat</a>
             </div>
           </div>
         </div>
@@ -257,7 +254,7 @@
             <div class="team-content">
               <h4>Sparepart</h4>
               <span></span>
-              <a href="" class="btn">Lihat</a>
+              <a href="info_sparepart.php" class="btn">Lihat</a>
             </div>
           </div>
         </div>
@@ -267,76 +264,6 @@
       </div>
     </div>
   </section>
-
-
-  <!--==========================
-    Testimonials Section
-  ============================-->
-
-  <!-- <section id="testimonials" class="padd-section text-center wow fadeInUp">
-    <div class="container">
-      <div class="row justify-content-center">
-
-        <div class="col-md-8">
-
-          <div class="testimonials-content">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-              <div class="carousel-inner" role="listbox">
-
-                <div class="carousel-item  active">
-                  <div class="top-top">
-
-                    <h2>Our Users Speack volumes us</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries.</p>
-                    <h4>Kimberly Tran<span>manager</span></h4>
-
-                  </div>
-                </div>
-
-                <div class="carousel-item ">
-                  <div class="top-top">
-
-                    <h2>Our Users Speack volumes us</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries.</p>
-                    <h4>Henderson<span>manager</span></h4>
-
-                  </div>
-                </div>
-
-                <div class="carousel-item ">
-                  <div class="top-top">
-
-                    <h2>Our Users Speack volumes us</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries.</p>
-                    <h4>David Spark<span>manager</span></h4>
-
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="btm-btm">
-
-                <ul class="list-unstyled carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ul>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
- -->
   <!--==========================
     Pricing Table Section
   ============================-->
@@ -344,56 +271,6 @@
   <!--==========================
     Blog Section
   ============================-->
-  <section id="blog" class="padd-section wow fadeInUp">
-
-    <div class="container">
-      <!-- <div class="section-title text-center">
-
-        <h2>Latest posts</h2>
-        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 col-lg-4">
-          <div class="block-blog text-left">
-            <a href="#"><img src="img/blog/blog-image-1.jpg" alt="img"></a>
-            <div class="content-blog">
-              <h4><a href="#">whats isthe difference between good and bat typography</a></h4>
-              <span>05, juin 2017</span>
-              <a class="pull-right readmore" href="#">read more</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="block-blog text-left">
-            <a href="#"><img src="img/blog/blog-image-2.jpg" class="img-responsive" alt="img"></a>
-            <div class="content-blog">
-              <h4><a href="#">whats isthe difference between good and bat typography</a></h4>
-              <span>05, juin 2017</span>
-              <a class="pull-right readmore" href="#">read more</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="block-blog text-left">
-            <a href="#"><img src="img/blog/blog-image-3.jpg" class="img-responsive" alt="img"></a>
-            <div class="content-blog">
-              <h4><a href="#">whats isthe difference between good and bat typography</a></h4>
-              <span>05, juin 2017</span>
-              <a class="pull-right readmore" href="#">read more</a>
-            </div>
-          </div>
-        </div>
-
-      </div> -->
-    </div>
-  </section>
 
   <!--==========================
     Newsletter Section

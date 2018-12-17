@@ -17,7 +17,7 @@
 			header("location: ../admin.php");
 		}
 		else{
-			header("location: login.php?login-gagal");
+			header("location: login_admin.php?login-admin-gagal");
 			}		
 	}	
 ?>
@@ -41,7 +41,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util0.css">
-	<link rel="stylesheet" type="text/css" href="css/main0.css">
+	<link rel="stylesheet" type="text/css" href="css/main2.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -80,13 +80,10 @@
 						</button>
 					</div>
 					<?php
-						if (isset($_GET['login-gagal'])) {?>
-							<div>
-								<br>
-								<center><p>
-									Username / Password anda salah !!!
-								</p></center>
-							</div>
+						if (isset($_GET['login-admin-gagal'])) {?>
+							<script>
+									alert("Email / Password anda salah !!!");
+							</script>
 					<?php
 						}
 					?>

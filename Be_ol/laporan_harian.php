@@ -1,8 +1,13 @@
 <?php
-    include("config.php");
-    $query = mysqli_query($connect,"SELECT tb_transaksi.kode_transaksi,tb_user.nama, tb_transaksi.alamat, tb_transaksi.no_telfon, tb_transaksi.nama_kendaraan, tb_transaksi.tahun, tb_transaksi.no_polisi, tb_transaksi.km, tb_transaksi.tgl_transaksi, tb_transaksi.bukti_pembayaran, tb_transaksi.status FROM tb_transaksi, tb_user WHERE tb_transaksi.id_user = tb_user.id_user");
-                                                
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_admin_username'])) {
+    # code...
+    header("location : Login/login_admin.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +52,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -63,28 +68,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -99,8 +117,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -108,28 +126,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -160,8 +191,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -172,16 +207,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -202,111 +243,103 @@
                                 <div class="user-data m-b-30">
                                     <h3 class="title-3 m-b-30">
                                         <i class="zmdi zmdi-account-calendar"></i>Laporan Harian</h3>
-                                    <div class="filters m-b-45">
-                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Products</option>
-                                                <option value="">Services</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                            <select class="js-select2 au-select-dark" name="time">
-                                                <option selected="selected">All Time</option>
-                                                <option value="">By Month</option>
-                                                <option value="">By Day</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
+                                                <form method="get">
+                                            <!-- <div class="row form-group">
+                                                <div class="col-12 col-md-1"></div>
+                                                <div class="col-12 col-md-3">    
+                                                    <label for="tanggal" class="form-control-label"> Tanggal </label>
+                                                </div>
+                                            </div> -->
+                                            <div class="row form-group">
+                                                <div class="col-12 col-md-1"></div>   
+                                                <div class="col-12 col-md-3">
+                                                    <input type="date" name="tanggal" id="tanggal" class="form-control">
+                                                </div>
+                                                <div class="col-12 col-md-3">     
+                                                    <button class="au-btn-filter" name="filter">
+                                                        <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                                </div>
+                                                <div class="col-12 col-md-2"></div>
+                                                <form method="POST" action="print.php">
+                                                    <div class="col-12 col-md-3">
+                                                        <button onclick="print_d()" class="btn btn-link btn-md" name="print" >
+                                                            <i class="zmdi zmdi-print"></i> Print</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </form>
                                     <div class="table-responsive table-data">
                                         <table class="table">
                                             <thead>
-                                                <tr>
-                                                    <td>ID Taransaksi</td>
-                                                    <td>Nama</td>
-                                                    <td>No. Telepon</td>
-                                                    <td>Alamat</td>
-                                                    <td>Nama Kendaraan</td>
-                                                    <td>Tahun</td>
-                                                    <td>No. Polisi</td>
-                                                    <td>KM</td>
-                                                    <td>Tanggal Transaksi</td>
-                                                    <td>Bukti Pembayaran</td>
-                                                    <td>Status</td>
-                                                    <!-- <td></td> -->
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                    while ($user = mysqli_fetch_array($query)){
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["kode_transaksi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["nama"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["alamat"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["no_telfon"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["nama_kendaraan"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["tahun"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["no_polisi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["km"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["tgl_transaksi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["bukti_pembayaran"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["status"];
-                                                        ?>
-                                                    </td>
-                                                </tr>
-                                                <?php 
-                                                    }
-                                                ?>
-                                            </tbody>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Alamat</th>
+                                                <th>No.Telepon</th>
+                                                <th>Nama Barang</th>
+                                                <th>Kategori</th>
+                                                <th>Harga Satuan</th>
+                                                <th>Tipe Kendaraan</th>
+                                                <th>Nama Kendaraan</th>
+                                                <th>Tahun</th>
+                                                <th>No.Polisi</th>
+                                                <th>Km</th>
+                                                <th>Harga Service</th>
+                                                <th>Tanggal Transaksi</th>
+                                                <th>Total Harga</th>
+                                                <th>Status Proses</th>
+                                                <th>Status Pembayaran</th>
+                                                <th>Bukti Pembayaran</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+
+                                                if (isset($_GET['tanggal'])) {
+                                                $tanggal = $_GET['tanggal'];
+                                                    # code...
+                                                    $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.tahun,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km && tb_transaksi.tgl_transaksi = '$tanggal' ORDER BY kode_transaksi ASC");
+                                                    $_SESSION['tanggal_terakhir'] = $tanggal;
+                                                }else{
+                                                    $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.tahun,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km ORDER BY kode_transaksi ASC");
+                                                }
+                                            ?>
+                                        <?php 
+                                            $no = 1;
+                                            while ($sql = mysqli_fetch_array($query)) {
+                                         ?>
+                                            <tr>
+                                                <td><?php echo $no ?></td>
+                                                <td><?php echo $sql['nama'] ?></td>
+                                                <td><?php echo $sql['alamat'] ?></td>
+                                                <td><?php echo $sql['no_telfon'] ?></td>
+                                                <td><?php echo $sql['nama_oli'] ?></td>
+                                                <td><?php echo $sql['kategori'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['harga'] ?></td>
+                                                <td><?php echo $sql['model'] ?></td>
+                                                <td><?php echo $sql['nama_kendaraan'] ?></td>
+                                                <td><?php echo $sql['tahun'] ?></td>
+                                                <td><?php echo $sql['no_polisi'] ?></td>
+                                                <td><?php echo $sql['km'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['harga'] ?></td>
+                                                <td><?php echo $sql['tgl_transaksi'] ?></td>
+                                                <td><?php echo "Rp. "; echo $sql['total_harga'] ?></td>
+                                                <td><?php echo $sql['status_proses'] ?></td>
+                                                <td><?php echo $sql['jenis_pembayaran'] ?></td>
+                                                <td><?php echo $sql['status'] ?></td>
+                                                <td><?php echo $sql['bukti_pembayaran'] ?></td>
+                                                <th>
+                                                    <div class="table-data-feature">
+                                                        <a href="#mediumModal" class="item" data-toggle="modal" data-placement="top" name="edit" data-id="<?php echo $sql['kode_transaksi'] ?>" title="Lihat Bukti Pembayaran<?php echo $sql['kode_transaksi'] ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                        </a>
+                                                    </div>
+                                                </th>
+                                            </tr><?php $no++; 
+                                        } ?>
+                                        </tbody>
                                         </table>
-                                    </div>
-                                    <div class="user-data__footer">
-                                        <button class="au-btn au-btn-load">load more</button>
                                     </div>
                                 </div>
                                 <!-- END USER DATA-->
@@ -326,6 +359,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="update_status.php">
+                                <div class="bukti_pembayaran"></div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal medium -->
             </div>
         </div>
 
@@ -354,6 +407,25 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script>
+        function print_d(){
+            // var tanggal = $(#tanggal).val();
+            window.open("print.php","_blank");
+        }
+    </script>
+    <script type="text/javascript">
+        $('#mediumModal').on('show.bs.modal', function (e){
+            var idx = $(e.relatedTarget).data("id");
+            $.ajax({
+                type : 'post',
+                url : 'lunas.php',
+                data : 'idx='+ idx,
+                success : function(data){
+                    $('.bukti_pembayaran').html(data);
+                }
+            });
+        });
+    </script>
 
 </body>
 

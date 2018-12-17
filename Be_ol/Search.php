@@ -1,6 +1,15 @@
+<?php
+  include("config.php");
+  ob_start();
+  session_start();
+  if (!isset($_SESSION['tb_admin_username'])) {
+    # code...
+    header("location : Login/login_admin.php");
+  }
+?>
 <?php 
     include("config.php");
-  $query = mysqli_query($connect,"SELECT tb_transaksi.kode_transaksi,tb_user.nama,tb_transaksi.no_telfon,tb_transaksi.alamat,tb_transaksi.nama_kendaraan,tb_transaksi.tahun,tb_transaksi.no_polisi,tb_transaksi.km,tb_transaksi.tgl_transaksi,tb_transaksi.bukti_pembayaran,tb_transaksi.status FROM tb_transaksi, tb_user WHERE tb_transaksi.id_user = tb_user.id_user");
+  $query = mysqli_query($connect,"SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.tahun,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km ORDER BY kode_transaksi ASC");
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +55,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="admin.php">
+                            <img src="images/Beol1.png" alt="Cool Admin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -62,28 +71,41 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -98,8 +120,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="admin.php">
+                    <img src="images/Beol1.png" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -107,28 +129,41 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
                             <a href="admin.php">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-home"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="data_user.php">
-                                <i class="fas  fa-table"></i>Data User</a>
+                                <i class="fas  fa-users"></i>Data User</a>
                         </li>
-                        <li class="has-sub">
+                        <li>
+                            <a href="info.php">
+                                <i class="fas  fa-info"></i>Info Oli dan Sparepart</a>
+                        </li>
+                        <li>
+                            <a href="data_harga_service.php">
+                                <i class="fas  fa-dollar"></i>Data Harga Service</a>
+                        </li>
+                            <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-table"></i>Laporan</a>
+                                    <i class="fas fa-file-text"></i>Laporan</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
                                         <a href="laporan_harian.php">
-                                            <i class="fas fa-table"></i>Laporan Harian</a>
+                                            <i class="fas fa-file-text"></i>Laporan Harian</a>
                                     </li>
                                     <li>
                                         <a href="laporan_bulanan.php">
-                                            <i class="fas fa-table"></i>Laporan Bulanan</a>
+                                            <i class="fas fa-file-text"></i>Laporan Bulanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.php">
+                                            <i class="fas fa-search"></i>Cari No Polisi</a>
                                     </li>
                                 </ul>  
                             </li>
-                        <li><a href="data_barang.php">
-                            <i class="fas fa-table"></i>Data Barang</a>
+                        <li>
+                            <a href="data_barang.php">
+                                <i class="fas fa-list-alt"></i>Data Barang</a>
                         </li>
                         <li>
                             <a href="data_hasil.php">
@@ -148,7 +183,10 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
                             </form>
                             <div class="header-button">
                                 <div class="account-wrap">
@@ -156,8 +194,12 @@
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_admin where id_admin = '$_SESSION[tb_admin_id_admin]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -168,16 +210,22 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#"><?php
+                                                            echo $w['nama'];
+                                                        ?></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                        <?php
+                                                            echo $_SESSION['tb_admin_username'];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -197,28 +245,34 @@
                                 <!-- USER DATA-->
                                 <div class="user-data m-b-30">
                                     <h3 class="title-3 m-b-30">
-                                        <i class="zmdi zmdi-account-calendar"></i>Cari No Polisi</h3>
+                                        <i class="fas fa-search"></i>Cari No Polisi</h3>
                                     <div class="filters m-b-45">
-                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
                                         <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                                <input class="au-input au-input--xl" type="text" id="search_isi" placeholder="Search for datas &amp; reports..." />
+                                                <input class="au-input au-input--xl" type="text" id="search_isi" placeholder="Search for datas &amp; reports... " />
                                         </div>
                                     </div>
                                     <div class="table-responsive table-data">
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th>ID Transaksi</th>
-                                                <th>Nama</th>
-                                                <th>No. Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Nama Kendaraan</th>
-                                                <th>Tahun</th>
-                                                <th>No. Polisi</th>
-                                                <th>KM</th>
-                                                <th>Tanggal Transaksi</th>
-                                                <th>Bukti Pembayaran</th>
-                                                <th>Status</th>
+                                                    <th>ID Transaksi</th>
+                                                    <th>Nama</th>
+                                                    <th>Alamat</th>
+                                                    <th>No.Telepon</th>
+                                                    <th>Nama Barang</th>
+                                                    <th>Kategori</th>
+                                                    <th>Harga Satuan</th>
+                                                    <th>Tipe Kendaraan</th>
+                                                    <th>Nama Kendaraan</th>
+                                                    <th>Tahun</th>
+                                                    <th>No.Polisi</th>
+                                                    <th>Km</th>
+                                                    <th>Harga Service</th>
+                                                    <th>Tanggal Transaksi</th>
+                                                    <th>Total Harga</th>
+                                                    <th>Status Proses</th>
+                                                    <th>Status Pembayaran</th>
+                                                    <th>Bukti Pembayaran</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="view_no_polisi">
@@ -226,61 +280,25 @@
                                                     while ($user = mysqli_fetch_array($query)){
                                                 ?>
                                                 <tr>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["kode_transaksi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["nama"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["no_telfon"];
-                                                        ?>
-                                                    </td>
-                                                      <td>
-                                                        <?php
-                                                            echo $user["alamat"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["nama_kendaraan"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["tahun"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["no_polisi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["km"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["tgl_transaksi"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["bukti_pembayaran"];
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                            echo $user["status"];
-                                                        ?>
-                                                    </td>
+                                                    <td><?php echo $user['kode_transaksi'] ?></td>
+                                                    <td><?php echo $user['nama'] ?></td>
+                                                    <td><?php echo $user['alamat'] ?></td>
+                                                    <td><?php echo $user['no_telfon'] ?></td>
+                                                    <td><?php echo $user['nama_oli'] ?></td>
+                                                    <td><?php echo $user['kategori'] ?></td>
+                                                    <td><?php echo "Rp. "; echo $user['harga'] ?></td>
+                                                    <td><?php echo $user['model'] ?></td>
+                                                    <td><?php echo $user['nama_kendaraan'] ?></td>
+                                                    <td><?php echo $user['tahun'] ?></td>
+                                                    <td><?php echo $user['no_polisi'] ?></td>
+                                                    <td><?php echo $user['km'] ?></td>
+                                                    <td><?php echo "Rp. "; echo $user['harga'] ?></td>
+                                                    <td><?php echo $user['tgl_transaksi'] ?></td>
+                                                    <td><?php echo "Rp. "; echo $user['total_harga'] ?></td>
+                                                    <td><?php echo $user['status_proses'] ?></td>
+                                                    <td><?php echo $user['jenis_pembayaran'] ?></td>
+                                                    <td><?php echo $user['status'] ?></td>
+                                                    <td><?php echo $user['bukti_pembayaran'] ?></td>
                                                 </tr>
                                                 <?php } ?>
 
