@@ -107,7 +107,7 @@
   while ($row = mysqli_fetch_array($query)) {
     # code...
 ?>
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-6">
           <div class="block-blog text-left">
             <a href="#"><img src="info/<?php echo $row['gambar'] ?>" alt="img"></a>
             <span><center><h3><?php echo $row['nama'] ?></h3></center></span>

@@ -50,12 +50,6 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="dashboard_user.php #testimonials">Home</a></li>
-          <li class="menu-has-children"><a href="">Service</a>
-            <ul>
-              <li><a href="form_service.php">Service Berkala</a></li>
-              <li><a href="riwayat.php">Riwayat Service</a></li>
-            </ul>
-          </li>
           <li><a href="dashboard_user.php #about-us">About Us</a></li>
           <li><a href="dashboard_user.php #team">Info Sparepart dan Oli</a></li>
           <li><a href="dashboard_user.php #contact">Help</a></li>
@@ -87,7 +81,7 @@
   while ($row = mysqli_fetch_array($query)) {
     # code...
 ?>
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-6">
           <div class="block-blog text-left">
             <a href="#"><img src="info/<?php echo $row['gambar'] ?>" alt="img"></a>
             <span><center><h3><?php echo $row['nama'] ?></h3></center></span>

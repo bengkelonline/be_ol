@@ -164,18 +164,18 @@
                                     <i class="zmdi zmdi-search"></i>
                                 </button> -->
                             </form>
+                            <?php 
+                                $wer = mysqli_query($connect, "select * from tb_user where id_user = '$_SESSION[tb_user_id_user]'");
+                                $w = mysqli_fetch_assoc($wer);
+                             ?>
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu"></div>
                                     <div class="noti__item js-item-menu"></div>
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="foto/<?php echo $w['gambar'] ?>" alt="John Doe" />
                                         </div>
-                                        <?php 
-                                            $wer = mysqli_query($connect, "select * from tb_user where id_user = '$_SESSION[tb_user_id_user]'");
-                                            $w = mysqli_fetch_assoc($wer);
-                                         ?>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
@@ -183,12 +183,12 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="foto/<?php echo $w['gambar'] ?>" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><?php
+                                                        <a href="profil.php"><?php
                                                             echo $w['nama'];
                                                         ?></a>
                                                     </h5>
@@ -201,6 +201,8 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
+                                                <a href="profil.php">
+                                                    <i class="zmdi zmdi-account"></i>Profile</a>
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                                 </div>

@@ -285,6 +285,12 @@
                                                     <button class="au-btn-filter" name="filter">
                                                         <i class="zmdi zmdi-filter-list"></i>filters</button>
                                                 </div>
+                                                <form method="POST" action="print.php">
+                                                    <div class="col-12 col-md-3">
+                                                        <button onclick="print_d()" class="btn btn-link btn-md" name="print" >
+                                                            <i class="zmdi zmdi-print"></i> Print</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </form>
                                     <div class="table-responsive table-data">
@@ -318,6 +324,8 @@
                                                 $tahun = $_GET['tahun'];
                                                     # code...
                                                     $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km && month(tb_transaksi.tgl_transaksi)='$bulan' and year(tb_transaksi.tgl_transaksi) = '$tahun' ORDER BY kode_transaksi ASC");
+                                                    $_SESSION['bulan_terakhir'] = $bulan;
+                                                    $_SESSION['tahun_terakhir'] = $tahun;
                                                 }else{
                                                     $query = mysqli_query($connect, "SELECT tb_transaksi.kode_transaksi, tb_user.nama,tb_user.alamat,tb_user.no_telfon,tb_oli.nama_oli,tb_oli.kategori,tb_oli.harga,tb_transaksi.model,tb_transaksi.nama_kendaraan,tb_transaksi.no_polisi,harga_sevice.km,harga_sevice.deskripsi,harga_sevice.harga,tb_transaksi.tgl_transaksi,tb_transaksi.total_harga,tb_transaksi.status_proses,tb_transaksi.jenis_pembayaran,tb_transaksi.status,tb_transaksi.bukti_pembayaran FROM tb_transaksi,tb_user,tb_oli,harga_sevice WHERE tb_user.id_user = tb_transaksi.id_user && tb_oli.id_oli = tb_transaksi.id_oli && harga_sevice.km = tb_transaksi.km ORDER BY kode_transaksi ASC");
                                                 }
@@ -394,7 +402,12 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-
+    <script>
+        function print_d(){
+            // var tanggal = $(#tanggal).val();
+            window.open("print_bulanan.php","_blank");
+        }
+    </script>
 </body>
 
 </html>

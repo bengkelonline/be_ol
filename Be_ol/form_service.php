@@ -8,8 +8,11 @@
   }
 ?>
 <?php 
-    include("config.php");
-    $sql = mysqli_query($connect, "SELECT * FROM tb_oli");
+    // include("config.php");
+    // if (isset($_POST['model'])){
+    // $model = $_POST['model'];   
+    // $sql = mysqli_query($connect, "SELECT * FROM tb_oli WHERE kategori = '$model' ORDER BY kategori ASC");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -159,24 +162,19 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button> -->
-                            </form>
+                            <form class="form-header" action="" method="POST"></form>
+                                        <?php 
+                                            $wer = mysqli_query($connect, "select * from tb_user where id_user = '$_SESSION[tb_user_id_user]'");
+                                            $w = mysqli_fetch_assoc($wer);
+                                         ?>
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu"></div>
                                     <div class="noti__item js-item-menu"></div>
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="foto/<?php echo $w['gambar'] ?>" />
                                         </div>
-                                        <?php 
-                                            $wer = mysqli_query($connect, "select * from tb_user where id_user = '$_SESSION[tb_user_id_user]'");
-                                            $w = mysqli_fetch_assoc($wer);
-                                         ?>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><?php echo $w['nama']?></a>
                                         </div>
@@ -184,12 +182,12 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="foto/<?php echo $w['gambar'] ?>" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><?php
+                                                        <a href="profil.php"><?php
                                                             echo $w['nama'];
                                                         ?></a>
                                                     </h5>
@@ -202,6 +200,8 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
+                                                <a href="profil.php">
+                                                    <i class="zmdi zmdi-account"></i>Profile</a>
                                                 <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                                 </div>
@@ -259,10 +259,13 @@
                                                 <div class="col-12 col-md-3">
                                                     <select name="model" id="model" class="form-control-sm form-control" required="required">
                                                         <option value="" disabled selected>--pilih--</option>
-                                                        <option value="Matic">Matic</option>
-                                                        <option value="Sport">Sport</option>
-                                                        <option value="Bebek">Bebek</option>
+                                                        <option value="matic">Matic</option>
+                                                        <option value="sport">Sport</option>
+                                                        <option value="bebek">Bebek</option>
                                                     </select>
+                                                    <?php                                            
+                                                    
+                                                     ?>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -346,6 +349,7 @@
                                                     <select onchange="cek_database()" onfocus="startCalc()" onblur="stopCalc()" name="oli" id="oli" class="form-control-sm form-control" required="required">
                                                         <option value="" disabled selected>--pilih--</option>
                                                         <?php 
+                                                        $sql = mysqli_query($connect, "SELECT * FROM tb_oli ORDER BY kategori ASC");
                                                             while ($tampil = mysqli_fetch_array($sql)) { 
                                                                 $selected = "";
                                                                 if(isset($_GET['nama_oli'])){
@@ -488,16 +492,24 @@
     </script>
     <script type="text/javascript">
     function cek_database2(){
-        var nama_oli = $("#check").val();
+        var nama_oli = $("#model").val();
         $.ajax({
-            url: 'ajax_cek2.php',
-            data:"nama_oli="+nama_oli ,
-        }).success(function (data) {
-            var json = data,
-            obj = JSON.parse(json);
-            $('#transmision').val(obj.transmision);
+            type: 'post',
+            url: 'ajax_oli.php',
+            data:"ktg="+nama_oli,
+            success: function(data){
+                $("#oli").html(data);
+            }
         });
     }
+    </script>
+    <script type="text/javascript">
+        $("#model").on("change", function(){
+            var value = $(this).val().toLowerCase();
+            $("#oli select").filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(value)> -1)
+            });
+        });
     </script>
 </body>
 

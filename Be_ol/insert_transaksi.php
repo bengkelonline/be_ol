@@ -10,6 +10,7 @@
 	$oli = $_POST['id_oli'];
 	$total = $_POST['total'];
 	$proses = "Proses";
+	$jenis = $_POST['jenis_pembayaran'];
 	$status = "Belum Lunas";
 	$jumlah = 1;
 	$query_stok = mysqli_query($connect,"SELECT * FROM tb_oli WHERE id_oli = '$oli'");
@@ -21,14 +22,27 @@
 				window.location.href='form_service.php';
 			</script>";
 	}else{
-		$query = mysqli_query($connect, "INSERT INTO tb_transaksi (id_user,id_oli,model,nama_kendaraan,tahun,no_polisi,km,tgl_transaksi,total_harga,status_proses,status) VALUES('$id_user','$oli','$model','$kendaraan','$tahun','$nopol','$km',now(),'$total','$proses','$status')");
+		$query = mysqli_query($connect, "INSERT INTO tb_transaksi (id_user,id_oli,model,nama_kendaraan,tahun,no_polisi,km,tgl_transaksi,total_harga,status_proses,jenis_pembayaran,status) VALUES('$id_user','$oli','$model','$kendaraan','$tahun','$nopol','$km',now(),'$total','$proses','$jenis','$status')");
 		$sql = mysqli_query($connect, "UPDATE tb_oli SET jml_stok = (SELECT jml_stok FROM (SELECT * FROM tb_oli) AS barang WHERE id_oli = '$oli')- '$jumlah' WHERE id_oli = '$oli'");
 		// if ($query && $sql) {
 			# code...
 		if ($sql) {
 			# code...
-		
-		echo "<script>
+		if ($jenis == "Transfer") {
+			# code...
+			echo "<script>
+				alert('No. Rek : 0051-01-054327-05-2');
+			</script>";
+			echo "<script>
+				alert('SELAMAT PERMINTAAN ANDA BERHASIL !!!');
+			</script>";
+			echo "<script>
+				window.location.href='form_service.php';
+			</script>";
+		}
+			echo "<script>
+				alert('SELAMAT PERMINTAAN ANDA BERHASIL !!!');
+			</script>";echo "<script>
 				window.location.href='form_service.php';
 			</script>";
 		}else {

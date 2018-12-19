@@ -82,6 +82,7 @@
             ?>
           </a>
             <ul>
+              <li><a href="profil.php">Profile</a></li>
               <li><a href="logout.php">Logout</a></li>
             </ul>
           </li>
@@ -284,7 +285,7 @@
     <div class="container">
       <div class="section-title text-center">
         <h2>Contact</h2>
-        <p class="separator">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        <!-- <p class="separator">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> -->
       </div>
     </div>
 
@@ -298,7 +299,7 @@
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
-              <p>A108 Adam Street<br>New York, NY 535022</p>
+              <p>Bengkel MAN 1 Jember<br>Kaliwates, Jember</p>
             </div>
           </div>
         </div>
@@ -306,7 +307,7 @@
           <div class="info">
             <div class="email">
               <i class="fa fa-envelope"></i>
-              <p>info@example.com</p>
+              <p>bengkelonline1@gmail.com</p>
             </div>
           </div>
         </div>
@@ -314,7 +315,7 @@
           <div class="info">
             <div>
               <i class="fa fa-phone"></i>
-              <p>+1 5589 55488 55s</p>
+              <p>+62858 3915 2974</p>
             </div>
           </div>
         </div>
@@ -332,8 +333,11 @@
         <div class="col-md-12 col-lg-4">
           <div class="footer-logo">
 
-            <a class="navbar-brand" href="#">eStartup</a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
+            <a class="navbar-brand" href="#">Be_Ol</a>
+            <p>Beol merupakan bengkel online yang melayani service ringan seperti Tune Up di wilayah Kaliwates, Jember.
+          Bengkel milik MAN 1 Jember yang masih berkembang namun mempunyai kinerja yang cukup baik.
+          Bengkel online akan memudahkan pelanggan dalam melakukan service ringan sehingga tidak perlu repot-repot membawa motornya ke bengkel.
+          </p>
 
           </div>
         </div>
@@ -341,10 +345,10 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4>Abou Us</h4>
+            <h4>About Us</h4>
 
             <ul class="list-unstyled">
-              <li><a href="#">About us</a></li>
+              <li><a href="#about-us">About us</a></li>
               <li><a href="#">Features item</a></li>
               <li><a href="#">Live streaming</a></li>
               <li><a href="#">Privacy Policy</a></li>
@@ -356,7 +360,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4>Abou Us</h4>
+            <h4>About Us</h4>
 
             <ul class="list-unstyled">
               <li><a href="#">About us</a></li>

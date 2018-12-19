@@ -14,7 +14,7 @@
             <label for="file-input" class=" form-control-label">File input</label>
         </div>
         <div class="col-12 col-md-9">
-        	<input type="text" name="kode_transaksi" id="kode_transaksi" value="<?php echo $id ?>" class="form-control">
+        	<input type="hidden" name="kode_transaksi" id="kode_transaksi" value="<?php echo $id ?>" class="form-control">
             <input type="file" id="file" name="file" class="form-control-file">
         </div>
     </div>
